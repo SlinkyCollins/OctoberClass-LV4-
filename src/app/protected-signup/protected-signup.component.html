@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="col-8 mx-auto shadow p-5 my-5">
+        <h1 class="text-success text-center p-2">Student Sign Up Page</h1>
+        <input type="text" class="form-control my-2" placeholder="Full Name" name="fName" [(ngModel)]="fullName">
+        <input type="text" class="form-control my-2" placeholder="Email Address" name="email" [(ngModel)]="email">
+        <input type="text" class="form-control my-2" placeholder="Password" name="password" [(ngModel)]="password">
+        <input type="text" class="form-control my-2" placeholder="Phone Number" name="phoneNumber" [(ngModel)]="phoneNumber">
+
+        <select name="" id="">
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+        </select>
+
+        <select name="" id="">
+            <option value=""></option>
+            <option value=""></option>
+        </select>
+
+        <div>
+            <label for=""></label>
+            <input type="date" name="" id="">
+        </div>
+        <button type="submit" class="btn btn-success w-100" (click)="signup()">Sign Up</button>
+    </div>
+
+    <div *ngIf="feedbackMessage">
+        {{feedbackMessage}}
+    </div>
+</div>

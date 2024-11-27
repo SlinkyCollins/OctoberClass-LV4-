@@ -1,0 +1,13 @@
+<p>protected-signin works!</p>
+
+
+<div class="container">
+    <div class="col-7 mx-auto shadow p-4">
+        <input type="text" class="form-control my-2" placeholder="Email Address" name="email" [(ngModel)]="email">
+        <input type="text" class="form-control my-2" placeholder="Password" name="password" [(ngModel)]="password">
+        <button type="submit" class="btn btn-success" (click)="signin()">Sign In</button>
+    </div>
+    <div>
+        {{this.msg}}
+    </div>
+</div>

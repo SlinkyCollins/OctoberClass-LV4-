@@ -1,0 +1,17 @@
+<p>contactlist works!</p>
+
+
+
+
+
+<div>
+    <h2>Contact List</h2>
+    <div *ngFor="let contact of this.contacts">
+        <hr/>
+        <p>Name: {{contact.name}}</p>
+        <p>Phone: {{contact.pnumber}} </p>
+        <p>Email: {{contact.email}} </p>
+        <p>Address: {{contact.address}} </p>
+        <hr/>
+    </div>
+  </div>

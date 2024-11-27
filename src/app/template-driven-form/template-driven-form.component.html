@@ -1,0 +1,56 @@
+
+
+<div class="container">
+    <div class="col-8 mx-auto shadow p-4 mt-4">
+        <!-- dirty,pristine,touched,untouched -->
+        <h3 class="text-primary text-center">Template Driven Form Validation</h3>
+        <form #form="ngForm">
+            <input type="text" class="form-control my-2" placeholder="Enter First Name" [(ngModel)]="firstname" name="fname" #fname="ngModel" minlength="5" required [class.is-valid]="fname.valid && fname.dirty" [class.is-invalid]="fname.invalid && fname.dirty">
+           <div *ngIf="fname.invalid && fname.dirty">
+                <span class="text-danger" *ngIf="fname.hasError('minlength')">
+                    The minimum character length is 5
+                </span>
+                <span class="text-danger" *ngIf="fname.hasError('required')">
+                    This field is required
+                </span>
+           </div>
+            <input type="text" class="form-control my-2" placeholder="Enter Last Name" [(ngModel)]="lastname" name="lname" #lname="ngModel" minlength="5" maxlength="10"  [class.is-valid]="lname.valid && lname.dirty" [class.is-invalid]="lname.invalid && lname.dirty" >
+            <div *ngIf="lname.invalid && lname.dirty">
+                <span class="text-danger" *ngIf="lname.hasError('minlength')">
+                    The minimum character length is 5
+                </span>
+                <span class="text-danger" *ngIf="lname.hasError('maxlength')">
+                    The maximum character length is 10
+                </span>
+           </div>
+            <input type="text" class="form-control my-2" placeholder="Enter Phone Number" [(ngModel)]="phonenumber" name="pnumber"  #pnumber="ngModel" required  [class.is-valid]="pnumber.valid && pnumber.dirty" [class.is-invalid]="pnumber.invalid && pnumber.touched" >
+            <div *ngIf="pnumber.invalid && pnumber.dirty">
+                <span class="text-danger" *ngIf="pnumber.hasError('required')">
+                    This field is required
+                </span>
+            </div>
+            <input type="number" class="form-control my-2" placeholder="Enter your age" [(ngModel)]="age" name="userAge"  #userAge="ngModel" min="18"  [class.is-valid]="userAge.valid && userAge.dirty" [class.is-invalid]="userAge.invalid && userAge.dirty" >
+            <div *ngIf="userAge.invalid && userAge.dirty">
+                <span class="text-danger" *ngIf="userAge.hasError('min')">
+                    You must be up to 18yrs of age
+                </span>
+           </div>
+
+           <div class="mb-2">
+                <input type="checkbox" [(ngModel)]="isChecked" name="terms">
+                <label class="text-muted mx-1">Accept terms and conditions</label>
+           </div>
+
+            <button class="btn btn-outline-primary w-100" [disabled]="!form.valid || isChecked == false">Submit Form</button>
+
+        </form>
+    </div>
+</div>
+
+<p>Form Valid: {{ form.valid }}</p>
+<p>Checkbox Checked: {{ isChecked }}</p>
+
+{{fname.dirty}}
+{{fname.pristine}}
+{{fname.touched}}
+{{fname.untouched}}

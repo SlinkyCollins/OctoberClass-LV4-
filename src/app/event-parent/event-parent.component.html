@@ -1,0 +1,14 @@
+
+<div class="container">
+    <div class="col-8 mx-auto shadow p-5">
+        <div>
+            <h3 class="text-success text-center">This is the parent</h3>
+            <input type="text" class="form-control my-3" [(ngModel)]="msgToChild" />
+            <p class="text-primary text-center">Msg From the child: {{response}}</p>
+            <button class="btn btn-outline-success" (click)="go()">Send message to child</button>
+        </div>
+        <div>
+            <app-event-child [sendMsg]="this.sendMsg" (eventemit)="receiveMsg($event)"></app-event-child>
+        </div>
+    </div>
+</div>

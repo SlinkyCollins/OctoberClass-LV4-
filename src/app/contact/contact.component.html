@@ -1,0 +1,45 @@
+<p>contact works!</p>
+
+
+<div class="p-5">
+    <div>
+        <h2>Contact App</h2>
+    </div>
+    <div>
+        <input type="text" class="form-control my-2" [(ngModel)]="name" placeholder="Name">
+        <input type="text" class="form-control my-2" [(ngModel)]="phonenumber" placeholder="Phone Number">
+        <input type="text" class="form-control my-2" [(ngModel)]="email" placeholder="Email">
+        <input type="text" class="form-control my-2" [(ngModel)]="address" placeholder="Address">
+        <button class="btn btn-primary" (click)="createcontact()">Create Contact</button>
+    </div>
+</div>
+
+<div>
+    <h3>Saved Contacts</h3>
+
+    <div *ngFor="let contact of contactArray, let i = index" style="margin: 1rem 0;">
+        <hr>
+        <div>
+            <p>{{i+1}}</p>
+            <p>Name: {{contact.name}}</p>
+            <p>Phone Number: {{contact.pnumber}}</p>
+            <p>Email: {{contact.email}}</p>
+            <p>Address: {{contact.address}}</p>
+        </div>
+        <div>
+            <button class="btn btn-danger" (click)="deleteContact(i)">Delete</button>
+            <a routerLink="/contact/view/{{i}}"><button class="btn btn-outline-primary" (click)="viewContact(i)">View</button></a>
+            
+            <a routerLink="/contact/edit/{{i}}"><button>Edit</button></a>
+             
+            <button (click)="check(i)">check</button>
+
+            
+            
+            <!-- <a [routerLink]="['/contact/edit', i]">
+                <button>Edit</button>
+            </a> -->
+        </div>
+        <hr>
+    </div>
+</div>

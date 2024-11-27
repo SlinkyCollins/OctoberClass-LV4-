@@ -1,0 +1,41 @@
+<p>reactive-form works!</p>
+
+<div class="container">
+    <div class="col-6 mx-auto shadow p-3">
+        <h1 class="text-success text-center">Reactive Form</h1>
+
+        <div>
+            <form [formGroup]="formone">
+                <input type="text" class="form-control my-2" placeholder="Firstname" formControlName="fname" name="firstname" [class.is-valid]="formone.get('fname')?.valid && formone.get('fname')?.dirty" [class.is-invalid]="formone.get('fname')?.invalid && formone.get('fname')?.dirty">
+                <div *ngIf="formone.get('fname')?.invalid && formone.get('fname')?.dirty">
+                    <span class="text-danger" *ngIf="formone.get('fname')?.getError('minlength')">This field must not be less than 4 words</span>
+                </div>
+                <input type="text" class="form-control my-2" placeholder="Phone Number" formControlName="pnumber" name="phonenumber" [class.is-valid]="formone.get('pnumber')?.valid && formone.get('pnumber')?.dirty" [class.is-invalid]="formone.get('pnumber')?.invalid && formone.get('pnumber')?.dirty">
+                <div *ngIf="formone.get('pnumber')?.invalid  && formone.get('pnumber')?.dirty">
+                    <span class="text-danger" *ngIf="formone.get('pnumber')?.getError('maxlength')">This field must not be more than 11 words</span>
+                    <span class="text-danger" *ngIf="formone.get('pnumber')?.getError('required')">This field is required</span>
+                </div>
+                <input type="text" class="form-control my-2" placeholder="Email" formControlName="email" name="email" [class.is-valid]="formone.get('email')?.valid && formone.get('email')?.dirty" [class.is-invalid]="formone.get('email')?.invalid && formone.get('email')?.dirty">
+                <div *ngIf="formone.get('email')?.invalid && formone.get('email')?.dirty">
+                    <span class="text-danger" *ngIf="formone.get('email')?.getError('required')">This field is required</span>
+                </div>
+                <input type="text" class="form-control my-2" placeholder="Address" formControlName="address" name="add" [class.is-valid]="formone.get('address')?.valid && formone.get('address')?.dirty" [class.is-invalid]="formone.get('address')?.invalid && formone.get('address')?.dirty">
+                <div *ngIf="formone.get('address')?.invalid && formone.get('address')?.dirty">
+                    <span class="text-danger" *ngIf="formone.get('address')?.getError('required')">This field is required</span>
+                </div>
+                <input type="checkbox" name="checkbox" formControlName="check">
+                <label>Accept T and Cs</label>
+                <div class="text-danger">
+                    <span *ngIf="formone.value['check']==false"> {{this.msg}}</span>
+                    <span *ngIf="formone.value['check']==true"></span>
+                </div>
+                <button class="btn btn-outline-success w-100" (click)="reactive()" [disabled]="formone.invalid || formone.value['check']==false">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    checkbox checked : {{formone.value['check']}}
+</div>

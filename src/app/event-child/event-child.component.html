@@ -1,0 +1,11 @@
+
+
+<div class="container">
+    <div class="col-8 mx-auto shadow p-4">
+        <p class="text-success t    ext-center">Message from parent : {{sendMsg}}</p>
+        
+        <input type="text" class="form-control my-2" [(ngModel)]="msgToParent">
+        <button class="btn btn-outline-success" (click)="send()">Send Msg to Parent</button>
+    </div>
+</div>
+
